@@ -1,0 +1,7 @@
+--- # Master playbook for web server
+- hosts: webservers 
+  become: yes
+  become_user: ajn
+  connection: ssh
+  roles:
+    - webservers
