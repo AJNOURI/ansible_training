@@ -1,3 +1,8 @@
-- name: Install Apache web server
+- name: Install (RedHat/CentOS) Apache web server
   yum: pkg=httpd state=latest
-  notify: Restart HTTPD
+  when: "ansible_os_family == 'RedHat'"
+  ignore_errors: yes
+- name: Install (Debian/Ubuntu) Apache web server 
+  apt: pkg=apache2 state=latest 
+  when: "ansible_os_family == 'Debian'"
+  ignore_errors: yes 
