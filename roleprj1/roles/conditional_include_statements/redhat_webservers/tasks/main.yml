@@ -1,0 +1,2 @@
+- name: Install (RedHat/CentOS) Apache web server
+  yum: pkg=httpd state=latest
