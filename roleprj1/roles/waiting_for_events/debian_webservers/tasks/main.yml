@@ -1,0 +1,9 @@
+- name: Install (Debian/Ubuntu) Apache web server 
+  apt: pkg=apache2 state=latest 
+
+- name: Wait for the a file to be present
+  wait_for:
+    path: /tmp/foo
+
+- name: Install vim package
+  apt: pkg=vim state=latest
