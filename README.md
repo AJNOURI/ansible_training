@@ -62,7 +62,7 @@ echo "$AUSER ALL=(ALL:ALL) PASSWD: ALL" >> /etc/sudoers
 - In ansible config file **_/etc/ansible/ansible.cfg_**
 
 ```
-sudo_user      = ajn
+sudo_user      = ansibleuser
 #ask_sudo_pass = True
 #ask_pass      = True
 ```
@@ -71,5 +71,5 @@ sudo_user      = ajn
 
 ```
   become: yes
-  become_user: ajn
+  become_user: ansibleuser
 ```
