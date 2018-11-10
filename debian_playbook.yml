@@ -1,0 +1,17 @@
+---
+- hosts: webservers
+  become: yes
+  become_user: root
+  connection: ssh
+  tasks:
+  - name: Install apache2
+    yum:
+      name: apache2
+      state: present
+  - name: Run Until status is active
+    shell: systemctl status apache2
+    register: result
+    until: result.stdout.find("active (running)") != -1
+    retries: 5
+    delay: 5
+  - debug: var=result

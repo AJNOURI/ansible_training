@@ -1,0 +1,23 @@
+- name: Install (RedHat/CentOS) Apache web server
+  yum: pkg=httpd state=latest
+  when: "ansible_os_family == 'RedHat'"
+  ignore_errors: yes
+  notify: Restart HTTPD 
+  tags:
+      - installation
+- name: Install (Debian/Ubuntu) Apache web server 
+  apt: pkg=apache2 state=latest 
+  when: "ansible_os_family == 'Debian'"
+  ignore_errors: yes 
+  notify: Restart Apache2
+  tags:
+      - installation
+
+- name: Get FileSystem resource consumption
+  command: df -h
+  register: result
+  tags:
+      - monitoring
+- debug: var=result
+  tags:
+      - monitoring

@@ -1,2 +1,0 @@
-- name: Install (Debian/Ubuntu) Apache web server 
-  apt: pkg=apache2 state=latest 
