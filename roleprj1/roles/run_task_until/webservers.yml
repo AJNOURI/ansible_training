@@ -1,13 +1,13 @@
 --- # Master playbook for web server
 - hosts: webservers 
   become: yes
-  become_user: ajn
+  become_user: root
   connection: ssh
   pre_tasks:
   - name: Record start time of the role
-    raw: date > /home/ajn/roletimetrack.log
+    raw: date > /tmp/roletimetrack.log
   roles:
   - { role: redhat_webservers, when: "ansible_os_family == 'RedHat'" }
   post_tasks:
   - name: Record end time of the role 
-    raw: date >> /home/ajn/roletimetrack.log
+    raw: date >> /tmp/roletimetrack.log

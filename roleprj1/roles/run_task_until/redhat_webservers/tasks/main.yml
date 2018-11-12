@@ -1,5 +1,5 @@
 - name: Install (RehHat/Centos) Apache web server
-  apt: pkg=httpd state=latest
+  yum: pkg=httpd state=latest
 
 - shell: systemctl status httpd
   register: result
