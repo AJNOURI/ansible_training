@@ -1,0 +1,5 @@
+---
+# handlers file for convert_into_role1
+
+- name: start_httpd
+  service: name=httpd state=restarted

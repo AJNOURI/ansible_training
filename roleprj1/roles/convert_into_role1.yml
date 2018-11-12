@@ -1,0 +1,22 @@
+- hosts: webservers
+  user: root
+  become: yes
+  become_user: root
+  connection: ssh
+  gather_facts: no
+
+  pre_tasks:
+  - name: start time log
+    raw: /usr/bin/date
+    register: starttime
+  - debug: var=starttime
+
+  roles:
+  - convert_into_role1
+
+  post_tasks:
+  - name: end time log
+    raw: /usr/bin/date
+    register: endtime
+  - debug: var=endtime
+

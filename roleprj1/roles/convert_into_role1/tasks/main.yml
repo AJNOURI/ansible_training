@@ -1,0 +1,23 @@
+---
+# tasks file for convert_into_role1
+
+- name: install packages
+  yum: pkg=httpd state=latest
+  notify: start_httpd
+
+- name: install list of packages
+  yum: pkg={{ item }} state=latest
+  loop:
+  - telnet
+  - lynx
+  - vim
+
+- name: verify that the webs service is running
+  command: systemctl status httpd
+  register: webserviceresult
+  ignore_errors: yes
+
+- name: log all installed packages
+  raw: yum list installed > /tmp/installed.log
+
+- debug: var=webserviceresult
