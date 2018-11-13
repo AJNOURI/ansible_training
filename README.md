@@ -39,7 +39,8 @@ echo "$AUSER ALL=(ALL:ALL) PASSWD: ALL" >> /etc/sudoers
 `ansibleuser ALL=(ALL:ALL) PASSWD: ALL`
 
 
-- On the control machine (Ansible):
+
+## On Ansible management host:
  
 - Log in as Ansible user:
 
@@ -56,7 +57,7 @@ echo "$AUSER ALL=(ALL:ALL) PASSWD: ALL" >> /etc/sudoers
 
 
 
-## Preparing the environment on the ansible machine
+### Preparing the environment
 
 
 - In ansible config file **_/etc/ansible/ansible.cfg_**
