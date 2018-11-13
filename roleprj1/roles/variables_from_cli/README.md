@@ -1,8 +1,31 @@
+
+
+As an example, in the main playbook "webservers.yml" replace some values with variable **'{{ var }}'**
+
+```
+--- # Master playbook for web server
+- hosts: '{{ hosts }}' 
+  become: yes
+  become_user: '{{ user }}'
+  connection: ssh
+  pre_tasks:
+  - name: Record start time of the role
+    raw: date > /home/ajn/roletimetrack.log
+  roles:
+  - { role: redhat_webservers, when: "ansible_os_family == 'RedHat'" }
+  - { role: debian_webservers, when: "ansible_os_family == 'Debian'" }
+  post_tasks:
+  - name: Record end time of the role 
+    raw: date >> /home/ajn/roletimetrack.log
+```
+
+Now you can pass the variables to the command using the option **--extra-vars "var1=value1 var2=value2 ..."**
+
 ```
 ansible-playbook webservers.yml --extra-vars "hosts=webservers user=root" 
 ```
-_____
- ______________
+
+___________________
 < PLAY [webservers] >
  -------------------
         \   ^__^
