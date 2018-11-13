@@ -1,7 +1,7 @@
 --- # Master playbook for web server
 - hosts: '{{ hosts }}' 
   become: yes
-  become_user: root
+  become_user: '{{ user }}'
   connection: ssh
   pre_tasks:
   - name: Record start time of the role

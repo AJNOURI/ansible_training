@@ -1,7 +1,8 @@
- 
-:ansible-playbook webservers.yml --extra-vars "hosts=webservers"
-
-___________________
+```
+ansible-playbook webservers.yml --extra-vars "hosts=webservers user=root" 
+```
+_____
+ ______________
 < PLAY [webservers] >
  -------------------
         \   ^__^
@@ -19,9 +20,9 @@ ___________________
                 ||----w |
                 ||     ||
 
-ok: [51.15.226.172]
 ok: [51.15.238.91]
 ok: [192.168.0.104]
+ok: [51.15.226.172]
 ok: [51.15.253.184]
  ______________________________________
 < TASK [Record start time of the role] >
